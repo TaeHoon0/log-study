@@ -1,4 +1,4 @@
-package kr.co.shortenurlservice.domain;
+package kr.co.shortenurlservice.domain.entity;
 
 import java.util.Random;
 

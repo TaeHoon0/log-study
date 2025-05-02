@@ -1,9 +1,10 @@
 package kr.co.shortenurlservice.application;
 
-import kr.co.shortenurlservice.domain.LackOfShortenUrlKeyException;
-import kr.co.shortenurlservice.domain.ShortenUrl;
-import kr.co.shortenurlservice.domain.ShortenUrlRepository;
-import kr.co.shortenurlservice.presentation.ShortenUrlCreateRequestDto;
+import kr.co.shortenurlservice.application.service.SimpleShortenUrlService;
+import kr.co.shortenurlservice.domain.exception.LackOfShortenUrlKeyException;
+import kr.co.shortenurlservice.domain.entity.ShortenUrl;
+import kr.co.shortenurlservice.domain.repository.ShortenUrlRepository;
+import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

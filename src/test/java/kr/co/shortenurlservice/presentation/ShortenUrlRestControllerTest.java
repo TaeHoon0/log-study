@@ -1,6 +1,7 @@
 package kr.co.shortenurlservice.presentation;
 
-import kr.co.shortenurlservice.application.SimpleShortenUrlService;
+import kr.co.shortenurlservice.application.service.SimpleShortenUrlService;
+import kr.co.shortenurlservice.presentation.controller.ShortenUrlRestController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

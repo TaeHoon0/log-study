@@ -1,12 +1,12 @@
-package kr.co.shortenurlservice.application;
+package kr.co.shortenurlservice.application.service;
 
-import kr.co.shortenurlservice.domain.LackOfShortenUrlKeyException;
-import kr.co.shortenurlservice.domain.NotFoundShortenUrlException;
-import kr.co.shortenurlservice.domain.ShortenUrl;
-import kr.co.shortenurlservice.domain.ShortenUrlRepository;
-import kr.co.shortenurlservice.presentation.ShortenUrlCreateRequestDto;
-import kr.co.shortenurlservice.presentation.ShortenUrlCreateResponseDto;
-import kr.co.shortenurlservice.presentation.ShortenUrlInformationDto;
+import kr.co.shortenurlservice.domain.exception.LackOfShortenUrlKeyException;
+import kr.co.shortenurlservice.domain.exception.NotFoundShortenUrlException;
+import kr.co.shortenurlservice.domain.entity.ShortenUrl;
+import kr.co.shortenurlservice.domain.repository.ShortenUrlRepository;
+import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
+import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
+import kr.co.shortenurlservice.presentation.dto.ShortenUrlInformationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

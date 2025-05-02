@@ -1,6 +1,6 @@
-package kr.co.shortenurlservice.presentation;
+package kr.co.shortenurlservice.presentation.dto.response;
 
-import kr.co.shortenurlservice.domain.ShortenUrl;
+import kr.co.shortenurlservice.domain.entity.ShortenUrl;
 
 public class ShortenUrlCreateResponseDto {
     private String originalUrl;

@@ -1,4 +1,6 @@
-package kr.co.shortenurlservice.domain;
+package kr.co.shortenurlservice.domain.repository;
+
+import kr.co.shortenurlservice.domain.entity.ShortenUrl;
 
 import java.util.List;
 

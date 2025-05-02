@@ -1,7 +1,7 @@
-package kr.co.shortenurlservice.presentation;
+package kr.co.shortenurlservice.global.exception;
 
-import kr.co.shortenurlservice.domain.LackOfShortenUrlKeyException;
-import kr.co.shortenurlservice.domain.NotFoundShortenUrlException;
+import kr.co.shortenurlservice.domain.exception.LackOfShortenUrlKeyException;
+import kr.co.shortenurlservice.domain.exception.NotFoundShortenUrlException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

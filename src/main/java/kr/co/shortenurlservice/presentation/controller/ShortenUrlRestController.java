@@ -1,6 +1,9 @@
-package kr.co.shortenurlservice.presentation;
+package kr.co.shortenurlservice.presentation.controller;
 
-import kr.co.shortenurlservice.application.SimpleShortenUrlService;
+import kr.co.shortenurlservice.application.service.SimpleShortenUrlService;
+import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
+import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
+import kr.co.shortenurlservice.presentation.dto.ShortenUrlInformationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

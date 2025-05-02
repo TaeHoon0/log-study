@@ -1,4 +1,4 @@
-package kr.co.shortenurlservice.presentation;
+package kr.co.shortenurlservice.presentation.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.URL;

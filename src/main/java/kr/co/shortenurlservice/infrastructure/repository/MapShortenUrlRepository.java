@@ -1,7 +1,7 @@
-package kr.co.shortenurlservice.infrastructure;
+package kr.co.shortenurlservice.infrastructure.repository;
 
-import kr.co.shortenurlservice.domain.ShortenUrl;
-import kr.co.shortenurlservice.domain.ShortenUrlRepository;
+import kr.co.shortenurlservice.domain.entity.ShortenUrl;
+import kr.co.shortenurlservice.domain.repository.ShortenUrlRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

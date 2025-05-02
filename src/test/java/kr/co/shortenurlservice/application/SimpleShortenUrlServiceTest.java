@@ -1,7 +1,8 @@
 package kr.co.shortenurlservice.application;
 
-import kr.co.shortenurlservice.presentation.ShortenUrlCreateRequestDto;
-import kr.co.shortenurlservice.presentation.ShortenUrlCreateResponseDto;
+import kr.co.shortenurlservice.application.service.SimpleShortenUrlService;
+import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
+import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
