@@ -4,6 +4,7 @@ import kr.co.shortenurlservice.domain.exception.LackOfShortenUrlKeyException;
 import kr.co.shortenurlservice.domain.exception.NotFoundShortenUrlException;
 import kr.co.shortenurlservice.domain.entity.ShortenUrl;
 import kr.co.shortenurlservice.domain.repository.ShortenUrlRepository;
+import kr.co.shortenurlservice.global.exception.BadRequestStatusCode;
 import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
 import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
 import kr.co.shortenurlservice.presentation.dto.ShortenUrlInformationDto;
@@ -37,7 +38,7 @@ public class SimpleShortenUrlService {
         ShortenUrl shortenUrl = shortenUrlRepository.findShortenUrlByShortenUrlKey(shortenUrlKey);
 
         if(null == shortenUrl)
-            throw new NotFoundShortenUrlException();
+            throw new NotFoundShortenUrlException(BadRequestStatusCode.BAD_REQUEST_SHORTEN_URL);
 
         shortenUrl.increaseRedirectCount();
         shortenUrlRepository.saveShortenUrl(shortenUrl);

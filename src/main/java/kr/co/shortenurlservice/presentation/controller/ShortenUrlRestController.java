@@ -1,6 +1,7 @@
 package kr.co.shortenurlservice.presentation.controller;
 
 import kr.co.shortenurlservice.application.service.SimpleShortenUrlService;
+import kr.co.shortenurlservice.presentation.dto.ApiResult;
 import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
 import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
 import kr.co.shortenurlservice.presentation.dto.ShortenUrlInformationDto;
@@ -26,12 +27,13 @@ public class ShortenUrlRestController {
     }
 
     @RequestMapping(value = "/shortenUrl", method = RequestMethod.POST)
-    public ResponseEntity<ShortenUrlCreateResponseDto> createShortenUrl(
+    public ResponseEntity<ApiResult<ShortenUrlCreateResponseDto>> createShortenUrl(
             @Valid @RequestBody ShortenUrlCreateRequestDto shortenUrlCreateRequestDto
     ) {
-        ShortenUrlCreateResponseDto shortenUrlCreateResponseDto =
-                simpleShortenUrlService.generateShortenUrl(shortenUrlCreateRequestDto);
-        return ResponseEntity.ok(shortenUrlCreateResponseDto);
+
+        return ResponseEntity.ok(
+                ApiResult.ok(simpleShortenUrlService.generateShortenUrl(shortenUrlCreateRequestDto))
+        );
     }
 
     @RequestMapping(value = "/{shortenUrlKey}", method = RequestMethod.GET)
