@@ -8,11 +8,13 @@ import kr.co.shortenurlservice.global.exception.BadRequestStatusCode;
 import kr.co.shortenurlservice.presentation.dto.request.ShortenUrlCreateRequestDto;
 import kr.co.shortenurlservice.presentation.dto.response.ShortenUrlCreateResponseDto;
 import kr.co.shortenurlservice.presentation.dto.ShortenUrlInformationDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class SimpleShortenUrlService {
 
@@ -30,8 +32,9 @@ public class SimpleShortenUrlService {
         ShortenUrl shortenUrl = new ShortenUrl(originalUrl, shortenUrlKey);
         shortenUrlRepository.saveShortenUrl(shortenUrl);
 
-        ShortenUrlCreateResponseDto shortenUrlCreateResponseDto = new ShortenUrlCreateResponseDto(shortenUrl);
-        return shortenUrlCreateResponseDto;
+        log.info("shortenUrl 생성 : {}", shortenUrl);
+
+        return new ShortenUrlCreateResponseDto(shortenUrl);
     }
 
     public String getOriginalUrlByShortenUrlKey(String shortenUrlKey) {
