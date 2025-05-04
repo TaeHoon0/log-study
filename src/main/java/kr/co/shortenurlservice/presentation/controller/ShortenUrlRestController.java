@@ -32,7 +32,6 @@ public class ShortenUrlRestController {
     public ResponseEntity<ApiResult<ShortenUrlCreateResponseDto>> createShortenUrl(
             @Valid @RequestBody ShortenUrlCreateRequestDto shortenUrlCreateRequestDto
     ) {
-        log.trace("shortenUrlCreateRequestDto: {}", shortenUrlCreateRequestDto);
 
         return ResponseEntity.ok(
                 ApiResult.ok(simpleShortenUrlService.generateShortenUrl(shortenUrlCreateRequestDto))

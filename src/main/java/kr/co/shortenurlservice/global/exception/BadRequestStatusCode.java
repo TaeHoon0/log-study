@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum BadRequestStatusCode {
 
-    BAD_REQUEST_SHORTEN_URL(HttpStatus.BAD_REQUEST, "4000000", "잘못된 단축 url 입니다.");
+    BAD_REQUEST_INVALID_PARAMETER(HttpStatus.BAD_REQUEST, "4000001", "요청한 파라미터가 유효하지 않습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

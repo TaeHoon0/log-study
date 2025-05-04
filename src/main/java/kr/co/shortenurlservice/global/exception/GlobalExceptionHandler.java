@@ -1,10 +1,14 @@
 package kr.co.shortenurlservice.global.exception;
 
+import java.util.List;
 import kr.co.shortenurlservice.domain.exception.LackOfShortenUrlKeyException;
 import kr.co.shortenurlservice.domain.exception.NotFoundShortenUrlException;
+import kr.co.shortenurlservice.presentation.dto.ApiResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -13,19 +17,54 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(LackOfShortenUrlKeyException.class)
-    public ResponseEntity<String> handleLackOfShortenUrlKeyException(
-            LackOfShortenUrlKeyException ex
+    public ResponseEntity<ApiResult> handleLackOfShortenUrlKeyException(
+        LackOfShortenUrlKeyException ex
     ) {
-        // 개발자에게 알려줄 수 있는 수단 필요
-        return new ResponseEntity<>("단축 URL 자원이 부족합니다.", HttpStatus.INTERNAL_SERVER_ERROR);
+
+        log.error(InternalServerErrorStatusCode.LACK_OF_SHORTEN_URL.getMessage());
+        //TODO Slack 알림 보내기
+
+        return ResponseEntity.status(InternalServerErrorStatusCode.LACK_OF_SHORTEN_URL.getHttpStatus())
+            .body(
+                ApiResult.builder()
+                    .code(InternalServerErrorStatusCode.LACK_OF_SHORTEN_URL.getCode())
+                    .message(InternalServerErrorStatusCode.LACK_OF_SHORTEN_URL.getMessage())
+                    .build()
+            );
     }
 
     @ExceptionHandler(NotFoundShortenUrlException.class)
-    public ResponseEntity<String> handleNotFoundShortenUrlException(
-            NotFoundShortenUrlException ex
+    public ResponseEntity<ApiResult> handleNotFoundShortenUrlException(
+        NotFoundShortenUrlException ex
     ) {
 
-        return new ResponseEntity<>(ex.getBadRequestStatusCode().getCode(), ex.getBadRequestStatusCode().getHttpStatus());
+        log.debug("단축 url key를 찾지 못 했습니다. key : {}", ex.getShortenUrlKey());
+
+        return ResponseEntity.status(NotFoundStatusCode.NOT_FOUND_SHORTEN_URL.getHttpStatus())
+            .body(
+                ApiResult.builder()
+                    .code(NotFoundStatusCode.NOT_FOUND_SHORTEN_URL.getCode())
+                    .message(NotFoundStatusCode.NOT_FOUND_SHORTEN_URL.getMessage())
+                    .build()
+            );
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResult> handleMethodArgumentNotValidException(
+        MethodArgumentNotValidException ex
+    ) {
+
+        List<String> errors = ex.getBindingResult().getFieldErrors().stream()
+            .map(error -> String.format("%s : %s", error.getField(), error.getDefaultMessage()))
+            .toList();
+
+        return ResponseEntity.status(BadRequestStatusCode.BAD_REQUEST_INVALID_PARAMETER.getHttpStatus())
+            .body(
+                ApiResult.builder()
+                    .code(BadRequestStatusCode.BAD_REQUEST_INVALID_PARAMETER.getCode())
+                    .message(BadRequestStatusCode.BAD_REQUEST_INVALID_PARAMETER.getMessage())
+                    .result(errors)
+                    .build()
+            );
+    }
 }

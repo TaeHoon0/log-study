@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum NotFoundStatusCode {
+public enum InternalServerErrorStatusCode {
 
-    NOT_FOUND_SHORTEN_URL(HttpStatus.NOT_FOUND, "4040001", "존재하지 않는 단축 url 입니다.");
+    LACK_OF_SHORTEN_URL(HttpStatus.INTERNAL_SERVER_ERROR, "5000001", "단축 url이 모두 소진되었습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
